@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article — Ceylon Meme Bureau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="assets/images/logo.png" alt="Ceylon Meme Bureau" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#trending">Trending</a></li>
+      <li><a href="templates.html?category=all">Templates</a></li>
+      <li><a href="articles.html">Insights</a></li>
+      <li><a href="index.html#submit">Submit</a></li>
+      <li><a href="index.html#collab">Advertise</a></li>
+      <li><a href="mailto:askfromcmsi@gmail.com">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Shown only when the ?slug= in the URL doesn't match any article -->
+  <section class="article-not-found" id="article-not-found" style="display: none;">
+    <h1 class="section-title">Article Not Found</h1>
+    <p class="section-subtitle">This article may have been moved or removed.</p>
+    <a href="articles.html" class="btn btn--secondary">← Back to Insights</a>
+  </section>
+
+  <!-- Filled in automatically by js/articles.js based on the ?slug= in the URL -->
+  <section class="article-page" id="article-content">
+
+    <a href="articles.html" class="article-back-link">← Back to Insights</a>
+
+    <div class="article-header">
+      <span class="article-category" id="article-category"></span>
+      <h1 class="article-title" id="article-title"></h1>
+
+      <div class="article-byline">
+        <img src="assets/images/founder.jpg" alt="Quintus Wijemanna" class="article-byline-photo">
+        <div class="article-byline-info">
+          <span class="article-byline-name">Quintus Wijemanna</span>
+          <span class="article-byline-meta">
+            <span id="article-date"></span>
+            <span class="meta-dot">•</span>
+            <span id="article-readtime"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-cover-wrap">
+      <img src="" alt="" class="article-cover" id="article-cover">
+    </div>
+
+    <div class="article-body" id="article-body"></div>
+
+    <div class="article-more">
+      <h2 class="article-more-title">More Insights</h2>
+      <div id="article-more-grid" class="article-grid"></div>
+    </div>
+
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <span class="footer-logo">CEYLON MEME BUREAU</span>
+      <p class="footer-tagline">Sri Lanka's Official Source of Fun</p>
+      <p class="footer-copyright">© 2026 Ceylon Meme Bureau. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/articles-data.js"></script>
+  <script src="js/articles.js"></script>
+</body>
+</html>

@@ -156,8 +156,9 @@ statNumbers.forEach(num => statsObserver.observe(num));
 // cards that match, hides the rest.
 // ============================================
 
-const filterButtons = document.querySelectorAll('.filter-btn');
+const filterButtons = document.querySelectorAll('.category-card');
 const templateCards = document.querySelectorAll('.template-card');
+const templateGrid = document.querySelector('.template-grid');
 
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -167,12 +168,18 @@ filterButtons.forEach(button => {
     filterButtons.forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
 
+    // reveal the grid now that a category has been chosen
+    templateGrid.classList.add('visible');
+
     // show/hide cards based on match
     templateCards.forEach(card => {
       const cardCategory = card.dataset.category;
       const matches = selectedCategory === 'all' || cardCategory === selectedCategory;
       card.classList.toggle('hidden', !matches);
     });
+
+    // scroll smoothly down to the revealed grid
+    templateGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 // ============================================
@@ -186,120 +193,46 @@ filterButtons.forEach(button => {
 const submitForm = document.getElementById('meme-submit-form');
 const formMessage = document.getElementById('form-message');
 
-submitForm.addEventListener('submit', (event) => {
-  event.preventDefault(); // stops the browser's default page-reload behavior
+const memeFileDrop = document.getElementById('meme-file-drop');
+const memeFileInput = document.getElementById('meme-upload');
+const memeFileText = document.getElementById('meme-file-text');
 
-  // At this point, in a real backend, we'd send this data
-  // to a server. For now, we just confirm it was "received."
-  formMessage.textContent = "Thanks! Your meme has been submitted for review.";
-
-  submitForm.reset(); // clears all the fields
+memeFileDrop.addEventListener('click', () => {
+  memeFileInput.click();
 });
 
-// ============================================
-// AI MEME UPSCALER — FRONT-END ONLY
-// ============================================
-
-const dropZone = document.getElementById('drop-zone');
-const upscalerInput = document.getElementById('upscaler-input');
-const upscalerPreview = document.getElementById('upscaler-preview');
-const previewBefore = document.getElementById('preview-before');
-
-dropZone.addEventListener('click', () => {
-  upscalerInput.click();
-});
-
-function handleFile(file) {
-  if (!file || !file.type.startsWith('image/')) {
-    return;
+memeFileInput.addEventListener('change', () => {
+  if (memeFileInput.files.length > 0) {
+    memeFileText.textContent = memeFileInput.files[0].name;
   }
-
-  const reader = new FileReader();
-
-  reader.onload = (event) => {
-    previewBefore.src = event.target.result;
-    upscalerPreview.style.display = 'grid';
-  };
-
-  reader.readAsDataURL(file);
-}
-
-upscalerInput.addEventListener('change', () => {
-  handleFile(upscalerInput.files[0]);
 });
 
-dropZone.addEventListener('dragover', (event) => {
+memeFileDrop.addEventListener('dragover', (event) => {
   event.preventDefault();
-  dropZone.classList.add('drag-over');
+  memeFileDrop.classList.add('drag-over');
 });
 
-dropZone.addEventListener('dragleave', () => {
-  dropZone.classList.remove('drag-over');
+memeFileDrop.addEventListener('dragleave', () => {
+  memeFileDrop.classList.remove('drag-over');
 });
 
-dropZone.addEventListener('drop', (event) => {
+memeFileDrop.addEventListener('drop', (event) => {
   event.preventDefault();
-  dropZone.classList.remove('drag-over');
-  handleFile(event.dataTransfer.files[0]);
+  memeFileDrop.classList.remove('drag-over');
+  if (event.dataTransfer.files.length > 0) {
+    memeFileInput.files = event.dataTransfer.files;
+    memeFileText.textContent = event.dataTransfer.files[0].name;
+  }
 });
 
-// ============================================
-// CURSOR-RESPONSIVE LOGO GLOW + TILT
-// Tracks distance from the mouse to the logo.
-// The closer the cursor, the brighter the glow
-// and the more the logo tilts toward it.
-// ============================================
-
-const heroLogo = document.getElementById('hero-logo');
-
-window.addEventListener('mousemove', (e) => {
-  const rect = heroLogo.getBoundingClientRect();
-
-  // center point of the logo on screen
-  const logoCenterX = rect.left + rect.width / 2;
-  const logoCenterY = rect.top + rect.height / 2;
-
-  // how far the mouse is from that center point
-  const dx = e.clientX - logoCenterX;
-  const dy = e.clientY - logoCenterY;
-  const distance = Math.sqrt(dx * dx + dy * dy);
-
-  const maxDistance = 300; // beyond this, no effect at all
-  const proximity = Math.max(0, 1 - distance / maxDistance); // 1 = right on it, 0 = far away
-
-  // glow gets stronger the closer the cursor is
-  const glowStrength = proximity * 0.8;
-  heroLogo.style.filter = `drop-shadow(0 0 ${16 * proximity}px rgba(47, 163, 107, ${glowStrength}))`;
-
-  // subtle 3D tilt, capped so it never looks extreme
-  const tiltX = Math.max(-8, Math.min(8, dy * 0.02 * proximity));
-  const tiltY = Math.max(-8, Math.min(8, -dx * 0.02 * proximity));
-  heroLogo.style.transform = `perspective(400px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+submitForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  formMessage.textContent = "Thanks! Your meme has been submitted for review.";
+  submitForm.reset();
+  memeFileText.textContent = 'Click to upload, or drag and drop';
 });
 
-window.addEventListener('mouseleave', () => {
-heroLogo.style.filter = 'drop-shadow(0 0 12px rgba(47, 163, 107, 0))';
-heroLogo.style.transform = 'perspective(400px) rotateX(0deg) rotateY(0deg)';
-});
-// ============================================
-// MOBILE NAV TOGGLE
-// Clicking the hamburger icon slides the mobile
-// menu in from the right. Clicking a link closes it.
-// ============================================
 
-const navToggle = document.getElementById('nav-toggle');
-const navLinksMobile = document.getElementById('nav-links-mobile');
-
-navToggle.addEventListener('click', () => {
-  navLinksMobile.classList.toggle('open');
-});
-
-// close the menu automatically once a link is clicked
-navLinksMobile.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinksMobile.classList.remove('open');
-  });
-});
 
 // ============================================
 // HERO GRID SPOTLIGHT
@@ -365,12 +298,66 @@ window.addEventListener('mouseleave', () => {
 // ============================================
 
 const navbar = document.querySelector('.navbar');
-const scrollThreshold = 40; // pixels scrolled before the effect kicks in
+const scrollThreshold = 40;
+
+let lastScrollY = window.scrollY;
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY > scrollThreshold) {
+  const currentScrollY = window.scrollY;
+
+  // shrink/solidify effect, same as before
+  if (currentScrollY > scrollThreshold) {
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
   }
+
+  // hide when scrolling down, reveal when scrolling up
+  if (currentScrollY > lastScrollY && currentScrollY > 150) {
+    // scrolling down, and far enough from the top to bother hiding
+    navbar.classList.add('nav-hidden');
+  } else {
+    // scrolling up (or near the very top)
+    navbar.classList.remove('nav-hidden');
+  }
+
+  lastScrollY = currentScrollY;
+});
+
+// ============================================
+// TIMELINE SCROLL REVEAL
+// Each timeline entry fades and slides in once
+// it scrolls into view, using the same
+// IntersectionObserver pattern as the stats counter.
+// ============================================
+
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+const timelineObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      timelineObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+timelineItems.forEach(item => timelineObserver.observe(item));
+
+// ============================================
+// COLLAB SECTION SPOTLIGHT
+// Same cursor-following glow effect as the hero,
+// scoped to the Collaborations section.
+// ============================================
+
+const collabSpotlight = document.getElementById('collab-spotlight');
+const collabSection = document.querySelector('.collab');
+
+collabSection.addEventListener('mousemove', (e) => {
+  const rect = collabSection.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+  collabSpotlight.style.setProperty('--spotlight-x', `${x}%`);
+  collabSpotlight.style.setProperty('--spotlight-y', `${y}%`);
 });

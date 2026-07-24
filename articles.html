@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights — Ceylon Meme Bureau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="assets/images/logo.png" alt="Ceylon Meme Bureau" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#trending">Trending</a></li>
+      <li><a href="templates.html?category=all">Templates</a></li>
+      <li><a href="articles.html">Insights</a></li>
+      <li><a href="index.html#submit">Submit</a></li>
+      <li><a href="index.html#collab">Advertise</a></li>
+      <li><a href="mailto:askfromcmsi@gmail.com">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <section class="articles-page">
+    <div class="articles-page-header">
+      <span class="stats-eyebrow">From the Founder's Desk</span>
+      <h1 class="section-title">Insights &amp; Articles</h1>
+      <p class="section-subtitle">Notes on internet culture, business, and building Ceylon Meme Bureau — written by our founder</p>
+    </div>
+
+    <!-- Most recent article, shown larger -->
+    <div id="articles-featured-slot" class="articles-featured-slot"></div>
+
+    <!-- All other articles -->
+    <div id="articles-full-grid" class="article-grid"></div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <span class="footer-logo">CEYLON MEME BUREAU</span>
+      <p class="footer-tagline">Sri Lanka's Official Source of Fun</p>
+      <p class="footer-copyright">© 2026 Ceylon Meme Bureau. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/articles-data.js"></script>
+  <script src="js/articles.js"></script>
+</body>
+</html>

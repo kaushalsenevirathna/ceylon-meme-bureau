@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Sri Lanka's official source of memes, viral content, and meme templates.">
+  <meta property="og:title" content="Ceylon Meme Bureau — Sri Lanka's Official Source of Fun">
+  <meta property="og:description" content="Bringing Sri Lanka's internet culture together through original memes, viral entertainment, and a thriving creator community.">
+  <meta property="og:image" content="assets/images/hero-icon.png">
+  <meta property="og:type" content="website">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ceylon Meme Bureau — Sri Lanka's Official Source of Fun</title>
 
@@ -47,6 +52,8 @@
 
         <li><a href="#gallery">Templates</a></li>
 
+        <li><a href="articles.html">Insights</a></li>
+
         <li><a href="#submit">Submit</a></li>
 
         <li><a href="#collab">Advertise</a></li>
@@ -72,6 +79,7 @@
     <ul class="nav-links-mobile" id="nav-links-mobile">
       <li><a href="#trending">Trending</a></li>
       <li><a href="#gallery">Gallery</a></li>
+      <li><a href="articles.html">Insights</a></li>
       <li><a href="#submit">Submit</a></li>
       <li><a href="#collab">Collaborate</a></li>
       <li><a href="mailto:askfromcmsi@gmail.com">Contact Us</a></li>
@@ -79,21 +87,31 @@
 
     <!-- Main glass content panel -->
 
-    <div class="hero-content">
-      <img src="assets/images/logo.png" alt="Ceylon Meme Bureau logo" class="hero-logo-img" id="hero-box-logo">
-      <h1 class="hero-title">CEYLON MEME BUREAU</h1>
-      <p class="hero-tagline">Sri Lanka's Official Source of Fun</p>
-      <p class="hero-description">
-        Bringing Sri Lanka's internet culture together through original memes,
-        viral entertainment, and a thriving creator community. From trending
-        humor to premium meme resources, Ceylon Meme Bureau is where creativity
-        meets comedy.
-      </p>
+<!-- Two-column hero content: big logo left, text + buttons right (glass box removed) -->
+<div class="hero-columns">
 
-      <div class="hero-buttons">
-        <a href="#trending" class="btn btn--primary">Explore Memes</a>
-        <a href="#submit" class="btn btn--secondary">Submit Your Meme</a>
+      <div class="hero-icon-col">
+        <div class="hero-icon-glow"></div>
+        <img src="assets/images/hero-icon.png" alt="Ceylon Meme Bureau logo" class="hero-icon">
       </div>
+
+      <div class="hero-text-col">
+        <span class="hero-badge">Sri Lanka's #1 Meme Page</span>
+        <h1 class="hero-title">CEYLON MEME<br>BUREAU</h1>
+        <p class="hero-tagline">Sri Lanka's Official Source of Fun</p>
+        <p class="hero-description">
+          Bringing Sri Lanka's internet culture together through original memes,
+          viral entertainment, and a thriving creator community. From trending
+          humor to premium meme resources, Ceylon Meme Bureau is where creativity
+          meets comedy.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#trending" class="btn btn--primary">Explore Memes</a>
+          <a href="#submit" class="btn btn--secondary">Submit Your Meme</a>
+        </div>
+      </div>
+
     </div>
 
 <!-- Small scroll hint at the bottom of the hero -->
@@ -102,25 +120,31 @@
 
   <!-- LIVE STATISTICS SECTION -->
   <section class="stats">
+    <span class="stats-eyebrow">Our Impact</span>
     <div class="stats-grid">
       <div class="stat-card">
         <span class="stat-number" data-target="10" data-suffix="K+">0</span>
+        <span class="stat-divider"></span>
         <span class="stat-label">Facebook Followers</span>
       </div>
       <div class="stat-card">
         <span class="stat-number" data-target="1" data-suffix="M+">0</span>
+        <span class="stat-divider"></span>
         <span class="stat-label">Weekly Reach</span>
       </div>
       <div class="stat-card">
         <span class="stat-number" data-target="600" data-suffix="+">0</span>
+        <span class="stat-divider"></span>
         <span class="stat-label">Published Memes</span>
       </div>
       <div class="stat-card">
         <span class="stat-number" data-target="4" data-suffix="">0</span>
+        <span class="stat-divider"></span>
         <span class="stat-label">Platforms</span>
       </div>
       <div class="stat-card">
         <span class="stat-number" data-target="2023" data-suffix="">0</span>
+        <span class="stat-divider"></span>
         <span class="stat-label">Established</span>
       </div>
     </div>
@@ -129,6 +153,7 @@
 <!-- ABOUT US SECTION -->
   <section class="about">
     <div class="about-intro">
+      <span class="stats-eyebrow">Our Story</span>
       <h2 class="section-title">About Us</h2>
       <p class="about-description">
         Ceylon Meme Bureau is a Sri Lankan digital entertainment platform
@@ -187,7 +212,7 @@
         <a href="https://www.facebook.com/share/18mT5D4oAQ/?mibextid=wwXIfr" class="founder-link" target="_blank">View Facebook Profile →</a>
       </div>
     </div>
-  </section>
+  </section> 
 
   <!-- TRENDING MEMES SECTION -->
   <section class="trending" id="trending">
@@ -290,94 +315,102 @@
     <h2 class="section-title">Meme Template Gallery</h2>
     <p class="section-subtitle">Download high-resolution templates, ready to edit</p>
 
-    <!-- Category filter buttons -->
-    <div class="filter-bar">
-      <button class="filter-btn active" data-category="all">All</button>
-      <button class="filter-btn" data-category="politics">Politics</button>
-      <button class="filter-btn" data-category="movies">Movies</button>
-      <button class="filter-btn" data-category="sports">Sports</button>
-      <button class="filter-btn" data-category="reaction">Reaction</button>
+    <!-- Category cards -->
+   <div class="category-cards">
+      <a href="templates.html?category=politics" class="category-card">
+        <img src="assets/images/templates/politics.jpg" alt="Politics templates" class="category-thumb">
+        <span class="category-overlay"></span>
+        <span class="category-label">Politics</span>
+      </a>
+      <a href="templates.html?category=movies" class="category-card">
+        <img src="assets/images/templates/movies.jpg" alt="Movie templates" class="category-thumb">
+        <span class="category-overlay"></span>
+        <span class="category-label">Movies</span>
+      </a>
+      <a href="templates.html?category=viral" class="category-card">
+        <img src="assets/images/templates/viral.jpg" alt="Viral templates" class="category-thumb">
+        <span class="category-overlay"></span>
+        <span class="category-label">Viral</span>
+      </a>
+      <a href="templates.html?category=others" class="category-card">
+        <img src="assets/images/templates/others.jpg" alt="Other templates" class="category-thumb">
+        <span class="category-overlay"></span>
+        <span class="category-label">Others</span>
+      </a>
     </div>
 
-    <div class="template-grid">
-
-      <div class="template-card" data-category="politics">
-        <img src="assets/images/templates/politics.jpg" alt="Politics meme template" class="template-thumbnail">
-        <div class="template-info">
-          <span>Politics Template</span>
-          <button class="download-btn">Download</button>
-        </div>
-      </div>
-
-      <div class="template-card" data-category="movies">
-        <img src="assets/images/templates/movies.png" alt="Movies meme template" class="template-thumbnail">
-        <div class="template-info">
-          <span>Movie Template</span>
-          <button class="download-btn">Download</button>
-        </div>
-      </div>
-
-      <div class="template-card" data-category="sports">
-        <img src="assets/images/templates/sports.jpg" alt="Sports meme template" class="template-thumbnail">
-        <div class="template-info">
-          <span>Sports Template</span>
-          <button class="download-btn">Download</button>
-        </div>
-      </div>
-
-      <div class="template-card" data-category="reaction">
-        <img src="assets/images/templates/reaction.png" alt="Reaction meme template" class="template-thumbnail">
-        <div class="template-info">
-          <span>Reaction Template</span>
-          <button class="download-btn">Download</button>
-        </div>
-      </div>
-
-    </div>
   </section>
 
 <!-- COMMUNITY MEME SUBMISSION -->
+  <!-- COMMUNITY MEME SUBMISSION -->
   <section class="submit" id="submit">
-    <h2 class="section-title">Submit Your Meme</h2>
-    <p class="section-subtitle">Get featured across our platforms — full credit always given</p>
+    <div class="submit-intro">
+      <span class="stats-eyebrow">Join The Community</span>
+      <h2 class="section-title">Submit Your Meme</h2>
+      <p class="submit-description">
+        Have a meme that deserves the spotlight? Share your original creation
+        with Ceylon Meme Bureau for a chance to be featured across our
+        official platforms.
+      </p>
+      <p class="submit-description">
+        Our team regularly reviews community submissions and selects the most
+        creative, original, and entertaining memes to publish on our
+        Facebook, Instagram, and website. Every featured submission receives
+        full creator credit, including your name, social media profile, or
+        page (as provided).
+      </p>
+
+      <div class="submit-guidelines">
+        <p class="submit-guidelines-title">Before submitting, please ensure that:</p>
+        <ul>
+          <li>Your meme is your original work or you have the rights to share it.</li>
+          <li>The content complies with our community standards and does not contain illegal, hateful, or harmful material.</li>
+          <li>Any social media username or page you wish us to credit is included in your submission.</li>
+        </ul>
+      </div>
+
+      <p class="submit-description">
+        Not every submission will be published, but every meme is carefully
+        reviewed by our team. If your meme is selected, it will become part
+        of the growing Ceylon Meme Bureau community while ensuring you
+        receive the recognition you deserve.
+      </p>
+
+      <p class="submit-cta-line">Create, Submit, Get Featured!</p>
+    </div>
 
     <form class="submit-form" id="meme-submit-form">
 
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" required>
-      </div>
-
       <div class="form-row">
         <div class="form-group">
-          <label for="facebook">Facebook Profile</label>
-          <input type="text" id="facebook" placeholder="Optional">
+          <label for="name">Name</label>
+          <input type="text" id="name" required>
         </div>
         <div class="form-group">
-          <label for="instagram">Instagram Profile</label>
-          <input type="text" id="instagram" placeholder="Optional">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required>
         </div>
+      </div>
+
+      <div class="form-group">
+        <label for="facebook">Social Media Profile / Page (for credit)</label>
+        <input type="text" id="facebook" placeholder="Optional">
       </div>
 
       <div class="form-group">
         <label for="meme-upload">Upload Your Meme</label>
-        <input type="file" id="meme-upload" accept="image/*" required>
+        <div class="file-drop" id="meme-file-drop">
+          <span class="file-drop-icon">📤</span>
+          <span class="file-drop-text" id="meme-file-text">Click to upload, or drag and drop</span>
+          <input type="file" id="meme-upload" accept="image/*" required hidden>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="caption">Caption</label>
-        <textarea id="caption" rows="3" required></textarea>
-      </div>
-
-      <div class="form-group form-checkbox">
+      <label class="custom-checkbox">
         <input type="checkbox" id="agreement" required>
-        <label for="agreement">I agree to let Ceylon Meme Bureau feature this submission with credit</label>
-      </div>
+        <span class="checkbox-box"></span>
+        <span class="checkbox-label">I agree to let Ceylon Meme Bureau feature this submission with credit</span>
+      </label>
 
       <button type="submit" class="btn btn--primary">Submit Meme</button>
 
@@ -386,30 +419,24 @@
     </form>
   </section>
 
-<!-- AI MEME UPSCALER -->
-  <section class="upscaler">
-    <h2 class="section-title">AI Meme Upscaler</h2>
-    <p class="section-subtitle">Turn low-resolution templates into sharp, high-quality images</p>
+<!-- INSIGHTS & ARTICLES -->
+  <section class="articles-teaser" id="insights">
+    <span class="stats-eyebrow">From the Founder's Desk</span>
+    <h2 class="section-title">Insights &amp; Articles</h2>
+    <p class="section-subtitle">Notes on internet culture, business, and building Ceylon Meme Bureau</p>
 
-    <div class="upscaler-box" id="drop-zone">
-      <p class="upscaler-hint">Drag & drop an image here, or click to browse</p>
-      <input type="file" id="upscaler-input" accept="image/*" hidden>
-    </div>
+    <div id="articles-teaser-grid" class="article-grid"></div>
 
-    <div class="upscaler-preview" id="upscaler-preview" style="display: none;">
-      <div class="preview-panel">
-        <span class="preview-label">Before</span>
-        <img id="preview-before" alt="Original uploaded image">
-      </div>
-      <div class="preview-panel">
-        <span class="preview-label">After (coming soon)</span>
-        <div class="preview-placeholder">AI enhancement will appear here once connected to the backend</div>
-      </div>
+    <div class="articles-teaser-cta">
+      <a href="articles.html" class="btn btn--secondary">View All Articles →</a>
     </div>
   </section>
 
 <!-- COLLABORATIONS & ADVERTISING -->
   <section class="collab" id="collab">
+    <div class="collab-grid-bg"></div>
+    <div class="collab-spotlight" id="collab-spotlight"></div>
+    
     <h2 class="section-title">Collaborations & Advertising</h2>
     <p class="section-subtitle">Partner with Sri Lanka's growing meme community</p>
 
@@ -450,7 +477,7 @@
 
       <div class="collab-card">
         <h3>Brand Collaboration</h3>
-        <div class="collab-price">Contact Us</div>
+        <a href="mailto:askfromcmsi@gmail.com?subject=Brand%20Collaboration%20Inquiry" class="collab-price collab-price--link">Contact Us</a>
         <ul class="collab-features">
           <li>Custom campaigns & long-term partnerships</li>
           <li>Sponsored series & giveaways</li>
@@ -463,7 +490,7 @@
 
     <div class="collab-cta">
       <p>Interested in working with us?</p>
-      <button class="btn btn--primary">Get Our Media Kit</button>
+      <a href="mailto:askfromcmsi@gmail.com?subject=Media%20Kit%20Request" class="btn btn--primary">Get Our Media Kit</a>
     </div>
   </section>
 
@@ -497,6 +524,9 @@
       <p class="footer-copyright">© 2026 Ceylon Meme Bureau. All rights reserved.</p>
     </div>
   </footer>
+
+<script src="js/articles-data.js"></script>
+<script src="js/articles.js"></script>
 
   <script src="js/script.js"></script>
 </body>
