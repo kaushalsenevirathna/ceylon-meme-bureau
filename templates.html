@@ -15,14 +15,34 @@
     <a href="index.html" class="logo">
       <img src="assets/images/logo.png" alt="Ceylon Meme Bureau" class="logo-img">
     </a>
-    <ul class="nav-links">
+<ul class="nav-links">
       <li><a href="index.html#trending">Trending</a></li>
       <li><a href="templates.html?category=all">Templates</a></li>
+      <li><a href="articles.html">Insights</a></li>
       <li><a href="index.html#submit">Submit</a></li>
       <li><a href="index.html#collab">Advertise</a></li>
       <li><a href="mailto:askfromcmsi@gmail.com">Contact Us</a></li>
     </ul>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <ul class="nav-links-mobile" id="nav-links-mobile">
+    <li class="nav-mobile-brand"><span>Menu</span></li>
+    <li><a href="index.html#trending">Trending</a></li>
+    <li><a href="templates.html?category=all">Templates</a></li>
+    <li><a href="articles.html">Insights</a></li>
+    <li><a href="index.html#submit">Submit</a></li>
+    <li><a href="index.html#collab">Collaborate</a></li>
+    <li><a href="mailto:askfromcmsi@gmail.com">Contact Us</a></li>
+    <li class="nav-mobile-cta"><a href="index.html#submit" class="btn btn--primary">Submit a Meme</a></li>
+  </ul>
 
 <section class="gallery" style="padding-top: 160px;">
     <h2 class="section-title" id="page-title">Meme Templates</h2>
@@ -154,6 +174,8 @@
     </div>
   </footer>
 
+  <script src="js/nav.js"></script>
   <script src="js/templates.js"></script>
+</body>
 </body>
 </html>

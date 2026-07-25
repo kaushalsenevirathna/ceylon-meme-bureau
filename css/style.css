@@ -794,6 +794,16 @@ body.nav-open {
   gap: 24px;
 }
 
+.meme-grid--preview {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 820px;
+}
+ 
+.trending-more {
+  text-align: center;
+  margin-top: 40px;
+}
+
 .meme-card {
   background: rgba(248, 246, 239, 0.04);
   border: 1px solid rgba(248, 246, 239, 0.08);
