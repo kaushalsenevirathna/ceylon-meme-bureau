@@ -235,7 +235,7 @@ submitForm.addEventListener('submit', async (event) => {
     // including the uploaded file — no manual work needed
     const formData = new FormData(submitForm);
 
-    const response = await fetch('https://formsubmit.co/ajax/askfromcmsi@gmail.com', {
+    const response = await fetch('https://formsubmit.co/ajax/ceylonmemebureau@gmail.com', {
       method: 'POST',
       body: formData,
       headers: { 'Accept': 'application/json' }
