@@ -225,11 +225,32 @@ memeFileDrop.addEventListener('drop', (event) => {
   }
 });
 
-submitForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  formMessage.textContent = "Thanks! Your meme has been submitted for review.";
-  submitForm.reset();
-  memeFileText.textContent = 'Click to upload, or drag and drop';
+submitForm.addEventListener('submit', async (event) => {
+  event.preventDefault(); // still stop the normal page reload — we'll send it ourselves
+
+  formMessage.textContent = "Sending your meme...";
+
+  try {
+    // FormData automatically reads every input's name + value inside the form,
+    // including the uploaded file — no manual work needed
+    const formData = new FormData(submitForm);
+
+    const response = await fetch('https://formsubmit.co/ajax/askfromcmsi@gmail.com', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      formMessage.textContent = "Thanks! Your meme has been submitted for review.";
+      submitForm.reset();
+      memeFileText.textContent = 'Click to upload, or drag and drop';
+    } else {
+      formMessage.textContent = "Something went wrong. Please try again.";
+    }
+  } catch (error) {
+    formMessage.textContent = "Something went wrong. Please check your connection and try again.";
+  }
 });
 
 

@@ -334,22 +334,23 @@
       <p class="submit-cta-line">Create, Submit, Get Featured!</p>
     </div>
 
-    <form class="submit-form" id="meme-submit-form">
+    <form class="submit-form" id="meme-submit-form" action="https://formsubmit.co/askfromcmsi@gmail.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="New Meme Submission — Ceylon Meme Bureau">
 
       <div class="form-row">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" required>
+          <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" required>
+          <input type="email" id="email" name="email" required>
         </div>
       </div>
 
       <div class="form-group">
         <label for="facebook">Social Media Profile / Page (for credit)</label>
-        <input type="text" id="facebook" placeholder="Optional">
+        <input type="text" id="facebook" name="social_page" placeholder="Optional">
       </div>
 
       <div class="form-group">
@@ -357,7 +358,7 @@
         <div class="file-drop" id="meme-file-drop">
           <span class="file-drop-icon">📤</span>
           <span class="file-drop-text" id="meme-file-text">Click to upload, or drag and drop</span>
-          <input type="file" id="meme-upload" accept="image/*" required hidden>
+          <input type="file" id="meme-upload" name="attachment" accept="image/*" required hidden>
         </div>
       </div>
 
