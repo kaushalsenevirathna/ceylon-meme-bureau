@@ -63,23 +63,26 @@ deployment.
 
 ## 📂 Project Structure
 
-├── index.html # Homepage (hero, about, trending preview, gallery, submit, collab)
-├── trending.html # Full trending memes listing
-├── templates.html # Meme template gallery, filterable by category
-├── articles.html # Full articles/insights listing
-├── article.html # Single article view (reads ?slug= from the URL)
-├── css/
-│ └── style.css # Shared design system + all page styles
-├── js/
-│ ├── script.js # Homepage interactivity (particles, counters, forms, etc.)
-│ ├── nav.js # Shared navbar + mobile menu behavior
-│ ├── templates.js # Template filtering + download logic
-│ ├── articles-data.js # Article content (acts as a simple local database)
-│ └── articles.js # Renders article cards + single article pages
-└── assets/
-└── images/ # Logos, meme thumbnails, template previews, article covers
+```
+index.html              # Homepage (hero, about, trending preview, gallery, submit, collab)
+trending.html            # Full trending memes listing
+templates.html           # Meme template gallery, filterable by category
+articles.html            # Full articles/insights listing
+article.html             # Single article view (reads ?slug= from the URL)
 
----
+css/
+  style.css              # Shared design system + all page styles
+
+js/
+  script.js              # Homepage interactivity (particles, counters, forms, etc.)
+  nav.js                 # Shared navbar + mobile menu behavior
+  templates.js           # Template filtering + download logic
+  articles-data.js       # Article content (acts as a simple local database)
+  articles.js            # Renders article cards + single article pages
+
+assets/
+  images/                # Logos, meme thumbnails, template previews, article covers
+```
 
 ## 🎨 Design Philosophy
 
