@@ -44,7 +44,6 @@ deployment.
 | 🔥 **Trending Memes** | A ranked weekly showcase of the page's top-performing memes, with engagement stats. |
 | 🖼️ **Meme Template Gallery** | Categorized, downloadable meme templates (Politics, Movies, Viral, Others) for the community to use. |
 | 📤 **Meme Submission Form** | Lets users upload and submit their own original memes for a chance to be featured, with credit given to the creator. |
-| 📈 **AI Meme Upscaler** | A tool for improving the resolution/quality of meme images before publishing. |
 | 📰 **Insights & Articles** | Long-form written pieces by the founder on internet culture, business, and the Sri Lankan economy — with a full article listing and individual article pages. |
 | 🤝 **Collaborations & Advertising** | Clear, tiered advertising packages (Starter, Business Spotlight, Ultimate Promotion) plus a custom brand collaboration option, for businesses looking to partner with the page. |
 | 👤 **About / Founder Story** | A brand timeline and founder profile, sharing the page's history and mission. |
