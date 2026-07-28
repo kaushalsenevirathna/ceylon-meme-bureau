@@ -1,6 +1,8 @@
 <div align="center">
 
-# 🇱🇰 Ceylon Meme Bureau
+<img src="assets/images/logo.png" alt="Ceylon Meme Bureau Logo" width="140">
+
+# Ceylon Meme Bureau
 
 ### *Sri Lanka's Official Source of Fun*
 
@@ -51,6 +53,40 @@ deployment.
 
 ---
 
+---
+
+## 📸 Screenshots
+
+### 🏠 Homepage
+![Homepage screenshot](assets/images/readme/homepage.png)
+
+The landing page introduces Ceylon Meme Bureau with an animated hero section,
+brand story, and quick navigation into the site's core features — trending
+memes, the template gallery, and submission form.
+
+### 📤 Meme Submission Form
+![Meme submission form screenshot](assets/images/readme/submission-form.png)
+
+A simple, guided form where users can upload their original memes for a
+chance to be featured on the page's official platforms, with clear submission
+guidelines and consent checkboxes built in.
+
+### 📰 Articles & Insights
+![Articles page screenshot](assets/images/readme/articles-page.png)
+
+A blog-style section featuring long-form articles written by the founder,
+covering Sri Lankan internet culture, economics, and behind-the-scenes
+thoughts on building the page.
+
+### 🤝 Collaborations & Advertising
+![Collaborations and advertising section screenshot](assets/images/readme/collab-section.png)
+
+Clear, tiered advertising packages designed for local businesses looking to
+promote themselves through the page's social reach, alongside a custom
+collaboration option for larger partnerships.
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Frontend:** HTML5, CSS3 (custom design system using CSS variables), Vanilla JavaScript
@@ -85,6 +121,8 @@ ceylon-meme-bureau/
     └── images/             # Logos, meme thumbnails, template previews, article covers
 ```
 ---
+
+
 
 ## 🎨 Design Philosophy
 
