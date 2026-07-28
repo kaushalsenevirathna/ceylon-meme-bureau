@@ -225,30 +225,58 @@ memeFileDrop.addEventListener('drop', (event) => {
   }
 });
 
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwY4f3AotZJBByTpOkwzP-77vxR79-3M1GAUCaVLEVKQu50xwdTXXUa3juN6VfGVAFS/exec";
+
+// Converts an uploaded image file into a Base64 text string,
+// since that's the format we can safely send inside JSON to Apps Script
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      // reader.result looks like "data:image/png;base64,iVBORw0K..."
+      // we only want the part AFTER the comma
+      const base64String = reader.result.split(',')[1];
+      resolve(base64String);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 submitForm.addEventListener('submit', async (event) => {
   event.preventDefault(); // still stop the normal page reload — we'll send it ourselves
+
+  const file = memeFileInput.files[0];
+  if (!file) {
+    formMessage.textContent = "Please attach an image before submitting.";
+    return;
+  }
 
   formMessage.textContent = "Sending your meme...";
 
   try {
-    // FormData automatically reads every input's name + value inside the form,
-    // including the uploaded file — no manual work needed
-    const formData = new FormData(submitForm);
+    const imageBase64 = await fileToBase64(file);
 
-    const response = await fetch('https://formsubmit.co/ajax/ceylonmemebureau@gmail.com', {
+    const payload = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      social: document.getElementById('facebook').value,
+      imageBase64: imageBase64,
+      imageMimeType: file.type,
+      imageFileName: file.name
+    };
+
+    await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify(payload)
     });
 
-    if (response.ok) {
-      formMessage.textContent = "Thanks! Your meme has been submitted for review.";
-      submitForm.reset();
-      memeFileText.textContent = 'Click to upload, or drag and drop';
-    } else {
-      formMessage.textContent = "Something went wrong. Please try again.";
-    }
+    formMessage.textContent = "Thanks! Your meme has been submitted for review.";
+    submitForm.reset();
+    memeFileText.textContent = 'Click to upload, or drag and drop';
+
   } catch (error) {
+    console.error(error);
     formMessage.textContent = "Something went wrong. Please check your connection and try again.";
   }
 });
