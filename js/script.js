@@ -160,28 +160,30 @@ const filterButtons = document.querySelectorAll('.category-card');
 const templateCards = document.querySelectorAll('.template-card');
 const templateGrid = document.querySelector('.template-grid');
 
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const selectedCategory = button.dataset.category;
+if (templateGrid && filterButtons.length > 0) {
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const selectedCategory = button.dataset.category;
 
-    // update which button looks "active"
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
+      // update which button looks "active"
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
 
-    // reveal the grid now that a category has been chosen
-    templateGrid.classList.add('visible');
+      // reveal the grid now that a category has been chosen
+      templateGrid.classList.add('visible');
 
-    // show/hide cards based on match
-    templateCards.forEach(card => {
-      const cardCategory = card.dataset.category;
-      const matches = selectedCategory === 'all' || cardCategory === selectedCategory;
-      card.classList.toggle('hidden', !matches);
+      // show/hide cards based on match
+      templateCards.forEach(card => {
+        const cardCategory = card.dataset.category;
+        const matches = selectedCategory === 'all' || cardCategory === selectedCategory;
+        card.classList.toggle('hidden', !matches);
+      });
+
+      // scroll smoothly down to the revealed grid
+      templateGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-
-    // scroll smoothly down to the revealed grid
-    templateGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
-});
+}
 // ============================================
 // MEME SUBMISSION FORM
 // No backend yet, so we just prevent the page
@@ -313,31 +315,33 @@ heroSection.addEventListener('mousemove', (e) => {
 
 const heroBoxLogo = document.getElementById('hero-box-logo');
 
-window.addEventListener('mousemove', (e) => {
-  const rect = heroBoxLogo.getBoundingClientRect();
+if (heroBoxLogo) {
+  window.addEventListener('mousemove', (e) => {
+    const rect = heroBoxLogo.getBoundingClientRect();
 
-  const logoCenterX = rect.left + rect.width / 2;
-  const logoCenterY = rect.top + rect.height / 2;
+    const logoCenterX = rect.left + rect.width / 2;
+    const logoCenterY = rect.top + rect.height / 2;
 
-  const dx = e.clientX - logoCenterX;
-  const dy = e.clientY - logoCenterY;
-  const distance = Math.sqrt(dx * dx + dy * dy);
+    const dx = e.clientX - logoCenterX;
+    const dy = e.clientY - logoCenterY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
 
-  const maxDistance = 300;
-  const proximity = Math.max(0, 1 - distance / maxDistance);
+    const maxDistance = 300;
+    const proximity = Math.max(0, 1 - distance / maxDistance);
 
-  const glowStrength = proximity * 0.8;
-  heroBoxLogo.style.filter = `drop-shadow(0 0 ${16 * proximity}px rgba(47, 163, 107, ${glowStrength}))`;
+    const glowStrength = proximity * 0.8;
+    heroBoxLogo.style.filter = `drop-shadow(0 0 ${16 * proximity}px rgba(47, 163, 107, ${glowStrength}))`;
 
-  const tiltX = Math.max(-8, Math.min(8, dy * 0.02 * proximity));
-  const tiltY = Math.max(-8, Math.min(8, -dx * 0.02 * proximity));
-  heroBoxLogo.style.transform = `perspective(400px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-});
+    const tiltX = Math.max(-8, Math.min(8, dy * 0.02 * proximity));
+    const tiltY = Math.max(-8, Math.min(8, -dx * 0.02 * proximity));
+    heroBoxLogo.style.transform = `perspective(400px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+  });
 
-window.addEventListener('mouseleave', () => {
-  heroBoxLogo.style.filter = 'drop-shadow(0 0 12px rgba(47, 163, 107, 0))';
-  heroBoxLogo.style.transform = 'perspective(400px) rotateX(0deg) rotateY(0deg)';
-});
+  window.addEventListener('mouseleave', () => {
+    heroBoxLogo.style.filter = 'drop-shadow(0 0 12px rgba(47, 163, 107, 0))';
+    heroBoxLogo.style.transform = 'perspective(400px) rotateX(0deg) rotateY(0deg)';
+  });
+}
 
 
 // ============================================
