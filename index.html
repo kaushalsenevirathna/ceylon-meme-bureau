@@ -222,43 +222,9 @@
   <!-- TRENDING MEMES SECTION -->
   <section class="trending" id="trending">
     <h2 class="section-title">Trending This Week</h2>
-    <p class="section-subtitle">The top-performing memes, ranked by engagement</p>
+    <p class="section-subtitle">The latest memes, fresh from our Facebook page</p>
 
-    <div class="meme-grid meme-grid--preview">
-
-      <div class="meme-card">
-         <img src="assets/images/memes/meme-1.jpg" alt="Trending meme #1" class="meme-thumbnail">
-        <div class="meme-info">
-          <span class="meme-rank">#1</span>
-          <div class="meme-stats">
-            <span>❤ 4.2K</span>
-            <span>↗ 1.1K</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="meme-card">
-        <img src="assets/images/memes/meme-2.jpg" alt="Trending meme #2" class="meme-thumbnail">        <div class="meme-info">
-          <span class="meme-rank">#2</span>
-          <div class="meme-stats">
-            <span>❤ 3.8K</span>
-            <span>↗ 940</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="meme-card">
-        <img src="assets/images/memes/meme-3.jpg" alt="Trending meme #3" class="meme-thumbnail">
-        <div class="meme-info">
-          <span class="meme-rank">#3</span>
-          <div class="meme-stats">
-            <span>❤ 3.1K</span>
-            <span>↗ 780</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
+    <div class="meme-grid meme-grid--preview" id="trending-grid" data-limit="3"></div>
 
     <div class="trending-more">
       <a href="trending.html" class="btn btn--secondary">View More Memes</a>
@@ -485,6 +451,7 @@
 <script src="js/articles.js"></script>
 
   <script src="js/nav.js"></script>
+  <script src="js/trending.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
