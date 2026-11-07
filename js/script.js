@@ -149,42 +149,6 @@ const statsObserver = new IntersectionObserver((entries) => {
 statNumbers.forEach(num => statsObserver.observe(num));
 
 // ============================================
-// TEMPLATE GALLERY FILTERING
-// ============================================
-// TEMPLATE GALLERY FILTERING
-// Clicking a category button shows only the
-// cards that match, hides the rest.
-// ============================================
-
-const filterButtons = document.querySelectorAll('.category-card');
-const templateCards = document.querySelectorAll('.template-card');
-const templateGrid = document.querySelector('.template-grid');
-
-if (templateGrid && filterButtons.length > 0) {
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const selectedCategory = button.dataset.category;
-
-      // update which button looks "active"
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      // reveal the grid now that a category has been chosen
-      templateGrid.classList.add('visible');
-
-      // show/hide cards based on match
-      templateCards.forEach(card => {
-        const cardCategory = card.dataset.category;
-        const matches = selectedCategory === 'all' || cardCategory === selectedCategory;
-        card.classList.toggle('hidden', !matches);
-      });
-
-      // scroll smoothly down to the revealed grid
-      templateGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-}
-// ============================================
 // MEME SUBMISSION FORM
 // No backend yet, so we just prevent the page
 // from reloading and show a confirmation message.
