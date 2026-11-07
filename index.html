@@ -34,61 +34,7 @@
     <div class="hero-glow hero-glow--one"></div>
     <div class="hero-glow hero-glow--two"></div>
 
-    <!-- Simple top nav, just logo for now -->
-<nav class="navbar">
-
-    <!-- Logo -->
-    <a href="#" class="logo">
-        <img src="assets/images/logo.png"
-             alt="Ceylon Meme Bureau"
-             class="logo-img"
-             id="hero-logo">
-    </a>
-
-    <!-- Desktop Navigation -->
-    <ul class="nav-links">
-
-        <li><a href="#trending">Trending</a></li>
-
-        <li><a href="#gallery">Templates</a></li>
-
-        <li><a href="articles.html">Insights</a></li>
-
-        <li><a href="#submit">Submit</a></li>
-
-        <li><a href="#collab">Advertise</a></li>
-        
-        <li><a href="mailto:ceylonmemebureau@gmail.com">Contact Us</a></li>
-
-    </ul>
-
-    <!-- Mobile Menu Button -->
-    <button class="nav-toggle"
-            id="nav-toggle"
-            aria-label="Toggle Navigation">
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </button>
-
-</nav>
-
-<!-- Dark overlay behind the mobile menu -->
-    <div class="nav-overlay" id="nav-overlay"></div>
-
-    <!-- Mobile menu, hidden by default -->
-    <ul class="nav-links-mobile" id="nav-links-mobile">
-      <li class="nav-mobile-brand"><span>Menu</span></li>
-      <li><a href="#trending">Trending</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="articles.html">Insights</a></li>
-      <li><a href="#submit">Submit</a></li>
-      <li><a href="#collab">Collaborate</a></li>
-      <li><a href="mailto:ceylonmemebureau@gmail.com">Contact Us</a></li>
-      <li class="nav-mobile-cta"><a href="#submit" class="btn btn--primary">Submit a Meme</a></li>
-    </ul>
+    <div id="site-nav"></div>
 
     <!-- Main glass content panel -->
 
@@ -300,8 +246,7 @@
       <p class="submit-cta-line">Create, Submit, Get Featured!</p>
     </div>
 
-    <form class="submit-form" id="meme-submit-form" action="https://formsubmit.co/ceylonmemebureau@gmail.com" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="_subject" value="New Meme Submission — Ceylon Meme Bureau">
+    <form class="submit-form" id="meme-submit-form">
 
       <div class="form-row">
         <div class="form-group">
@@ -450,6 +395,7 @@
 <script src="js/articles-data.js"></script>
 <script src="js/articles.js"></script>
 
+  <script src="js/navbar.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/trending.js"></script>
   <script src="js/script.js"></script>
