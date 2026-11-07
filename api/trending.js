@@ -1,3 +1,8 @@
+// Keep captions short enough to look like meme posts.
+const MAX_CAPTION_LENGTH = 300;
+// Identify web addresses commonly used in announcement posts.
+const LINK_PATTERN = /https?:\/\/|www\./i;
+
 module.exports = async function handler(req, res) {
   // Read the secrets from Vercel's environment variables
   const pageId = process.env.FB_PAGE_ID;
@@ -10,7 +15,7 @@ module.exports = async function handler(req, res) {
   const url =
     `https://graph.facebook.com/v27.0/${pageId}/published_posts` +
     `?fields=message,created_time,permalink_url,full_picture` +
-    `&limit=10&access_token=${token}`;
+    `&limit=30&access_token=${token}`;
 
   try {
     const response = await fetch(url);
@@ -22,12 +27,20 @@ module.exports = async function handler(req, res) {
     }
 
     // Send back only what the website needs
-    const posts = data.data.map(post => ({
-      image: post.full_picture,
-      caption: post.message || '',
-      link: post.permalink_url,
-      date: post.created_time
-    }));
+    const posts = data.data
+      .filter(post => {
+        const caption = post.message || '';
+        return post.full_picture &&
+          caption.length <= MAX_CAPTION_LENGTH &&
+          !LINK_PATTERN.test(caption);
+      })
+      .slice(0, 10)
+      .map(post => ({
+        image: post.full_picture,
+        caption: post.message || '',
+        link: post.permalink_url,
+        date: post.created_time
+      }));
 
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
     return res.status(200).json(posts);
