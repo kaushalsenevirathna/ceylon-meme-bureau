@@ -943,6 +943,46 @@ body.nav-open {
   border-color: var(--color-accent);
 }
 
+.copyright-notice {
+  max-width: 760px;
+  margin: 0 auto 40px;
+  padding: 20px 24px;
+  background: rgba(248, 246, 239, 0.04);
+  border: 1px solid rgba(248, 246, 239, 0.08);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+}
+
+.copyright-notice-title {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+}
+
+.copyright-notice-text {
+  margin: 0;
+  color: var(--color-light-gray);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.copyright-notice-text + .copyright-notice-text {
+  margin-top: 10px;
+}
+
+.copyright-notice a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.copyright-notice a:hover {
+  text-decoration: underline;
+}
+
 .template-grid {
   max-width: 1100px;
   margin: 0 auto;
@@ -1024,6 +1064,14 @@ a.download-btn {
 #template-grid:not(:has(.template-card)) {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .copyright-notice {
+    margin-right: 16px;
+    margin-left: 16px;
+    padding: 16px 18px;
+  }
 }
 /* ============================================
    4e. COMMUNITY MEME SUBMISSION FORM
