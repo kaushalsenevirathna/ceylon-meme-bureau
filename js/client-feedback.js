@@ -60,7 +60,12 @@ const clientFeedback = [
 ];
 
 const clientFeedbackTrack = document.getElementById('cf-track');
-const starIcon = '<svg class="cf-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.94 5.95 6.56.95-4.75 4.63 1.12 6.53L12 17.48l-5.87 3.08 1.12-6.53L2.5 9.4l6.56-.95L12 2.5Z"/></svg>';
+const starIcon = '<svg class="cf-star-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.94 5.95 6.56.95-4.75 4.63 1.12 6.53L12 17.48l-5.87 3.08 1.12-6.53L2.5 9.4l6.56-.95L12 2.5Z"/></svg>';
+const quoteIcon = '<svg class="cf-quote" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M20.5 11H10.25A5.25 5.25 0 0 0 5 16.25v10.5A5.25 5.25 0 0 0 10.25 32h6.5A5.25 5.25 0 0 0 22 26.75V20h-8v-3h6.5V11Zm20 0H30.25A5.25 5.25 0 0 0 25 16.25v10.5A5.25 5.25 0 0 0 30.25 32h6.5A5.25 5.25 0 0 0 42 26.75V20h-8v-3h6.5V11Z"/></svg>';
+const verifiedIcon = '<svg class="cf-verified" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Verified client"><title>Verified client</title><path d="M12 2.5 14.4 4l2.82-.1 1.16 2.57 2.37 1.53-.48 2.78.48 2.77-2.37 1.54-1.16 2.56-2.82-.1L12 19.5l-2.4-1.85-2.82.1-1.16-2.56-2.37-1.54.48-2.77-.48-2.78L5.62 6.47 6.78 3.9 9.6 4 12 2.5Zm-1.16 12.86 5.9-5.9-1.41-1.42-4.49 4.49-2.08-2.08-1.42 1.41 3.5 3.5Z"/></svg>';
+
+const averageRating = (clientFeedback.reduce((sum, client) => sum + client.rating, 0) / clientFeedback.length).toFixed(1);
+document.querySelector('#cf-trust-rating span').textContent = `${averageRating} average rating from our clients`;
 
 function getClientInitials(name) {
   return name.split(' ').map(part => part[0]).join('').slice(0, 2);
@@ -79,21 +84,52 @@ function createClientCard(client, isDuplicate) {
   }).join('');
 
   card.innerHTML = `
+    ${quoteIcon}
     <div class="cf-stars" aria-label="Rated ${client.rating} out of 5" role="img">${stars}</div>
     <h3 class="cf-review-heading">${client.heading}</h3>
     <p class="cf-review">${client.review}</p>
     <div class="cf-person">
       <div class="cf-photo-wrap">
-        <img class="cf-photo" src="${client.photo}" alt="${client.name}" loading="lazy"
-          onerror="this.hidden=true; this.nextElementSibling.hidden=false">
-        <span class="cf-initials" hidden aria-hidden="true">${getClientInitials(client.name)}</span>
+        <img class="cf-photo" alt="${client.name}" loading="lazy">
+        <span class="cf-initials" aria-hidden="true">${getClientInitials(client.name)}</span>
       </div>
       <div>
-        <p class="cf-person-name">${client.name}</p>
+        <p class="cf-person-name">${client.name}${verifiedIcon}</p>
         <span class="cf-person-position">${client.position}</span>
       </div>
     </div>
   `;
+
+  const photo = card.querySelector('.cf-photo');
+  const initials = card.querySelector('.cf-initials');
+
+  const showPhoto = () => {
+    photo.style.display = 'block';
+    initials.style.display = 'none';
+  };
+
+  const keepInitials = () => {
+    photo.style.display = 'none';
+    initials.style.display = 'grid';
+  };
+
+  photo.addEventListener('load', () => {
+    if (photo.naturalWidth > 0) {
+      showPhoto();
+    } else {
+      keepInitials();
+    }
+  });
+  photo.addEventListener('error', keepInitials);
+  photo.src = client.photo;
+
+  if (photo.complete) {
+    if (photo.naturalWidth > 0) {
+      showPhoto();
+    } else {
+      keepInitials();
+    }
+  }
 
   return card;
 }
