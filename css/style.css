@@ -850,13 +850,13 @@ body.nav-open {
   padding: 14px 16px;
 }
 
-.meme-rank {
+.meme-date {
   font-family: var(--font-heading);
   font-weight: 600;
   color: var(--color-accent);
 }
 
-.meme-stats {
+.meme-link {
   display: flex;
   gap: 12px;
   font-size: 0.8rem;

@@ -30,11 +30,11 @@ function buildMemeCard(post) {
   info.className = 'meme-info';
 
   const date = document.createElement('span');
-  date.className = 'meme-rank';
+  date.className = 'meme-date';
   date.textContent = formatMemeDate(post.date);
 
   const cta = document.createElement('span');
-  cta.className = 'meme-stats';
+  cta.className = 'meme-link';
   cta.textContent = 'View on Facebook ↗';
 
   info.appendChild(date);
