@@ -978,6 +978,10 @@ body.nav-open {
   background: linear-gradient(135deg, var(--color-secondary-green), var(--color-bg));
 }
 
+.template-thumbnail {
+  object-fit: contain;
+}
+
 .template-info {
   display: flex;
   justify-content: space-between;
@@ -1006,6 +1010,20 @@ body.nav-open {
   background: var(--color-accent);
   color: var(--color-bg);
   cursor: pointer;
+}
+
+a.download-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+#template-grid {
+  text-align: center;
+}
+
+#template-grid:not(:has(.template-card)) {
+  display: flex;
+  justify-content: center;
 }
 /* ============================================
    4e. COMMUNITY MEME SUBMISSION FORM

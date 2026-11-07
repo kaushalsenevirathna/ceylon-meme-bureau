@@ -1,48 +1,82 @@
 // ============================================
-// TEMPLATES PAGE — READS ?category= FROM THE URL
-// and shows only matching template cards.
+// TEMPLATES PAGE — LOADS IMAGES FROM GOOGLE DRIVE
+// and shows the selected category.
 // ============================================
 
-// URLSearchParams reads the part of the URL after "?"
+const validCategories = ['all', 'politics', 'movies', 'viral', 'others'];
 const params = new URLSearchParams(window.location.search);
-const selectedCategory = params.get('category') || 'all';
+const requestedCategory = params.get('category') || 'all';
+const selectedCategory = validCategories.includes(requestedCategory)
+  ? requestedCategory
+  : 'all';
 
-const templateCards = document.querySelectorAll('.template-card');
-const pageTitle = document.getElementById('page-title');
+function buildTemplateCard(template) {
+  const card = document.createElement('div');
+  card.className = 'template-card';
 
-templateCards.forEach(card => {
-  const cardCategory = card.dataset.category;
-  const matches = selectedCategory === 'all' || cardCategory === selectedCategory;
-  card.classList.toggle('hidden', !matches);
-});
+  const image = document.createElement('img');
+  image.className = 'template-thumbnail';
+  image.src = template.thumbnail;
+  image.alt = `${template.label} meme template`;
+  image.loading = 'lazy';
 
-// Update the heading to reflect which category we're viewing
-if (selectedCategory !== 'all') {
-  const label = selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1);
-  pageTitle.textContent = `${label} Templates`;
+  const info = document.createElement('div');
+  info.className = 'template-info';
+
+  const label = document.createElement('span');
+  label.textContent = template.label;
+
+  const download = document.createElement('a');
+  download.className = 'download-btn';
+  download.href = template.download;
+  download.target = '_blank';
+  download.rel = 'noopener noreferrer';
+  download.textContent = 'Download';
+
+  info.appendChild(label);
+  info.appendChild(download);
+  card.appendChild(image);
+  card.appendChild(info);
+
+  return card;
 }
 
-// ============================================
-// DOWNLOAD BUTTON — downloads the template
-// image that sits inside the same card
-// ============================================
-const downloadButtons = document.querySelectorAll('.download-btn');
+async function loadTemplates() {
+  const grid = document.getElementById('template-grid');
+  if (!grid) return; // this page has no template section, do nothing
 
-downloadButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const card = button.closest('.template-card');
-    const image = card.querySelector('.template-thumbnail');
-    const label = card.querySelector('.template-info span').textContent;
+  const pageTitle = document.getElementById('page-title');
+  if (selectedCategory !== 'all' && pageTitle) {
+    const label = selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1);
+    pageTitle.textContent = `${label} Templates`;
+  }
 
-    // Build a filename from the visible label, e.g. "Politics Template" -> "politics-template.jpg"
-    const extension = image.src.split('.').pop().split('?')[0];
-    const fileName = label.trim().toLowerCase().replace(/\s+/g, '-') + '.' + extension;
+  grid.textContent = 'Loading templates...';
 
-    const link = document.createElement('a');
-    link.href = image.src;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  });
-});
+  try {
+    const response = await fetch(`/api/templates?category=${selectedCategory}`);
+    if (!response.ok) {
+      throw new Error('Request failed with status ' + response.status);
+    }
+
+    const templates = await response.json();
+    if (!Array.isArray(templates)) {
+      throw new Error('Template response was not a list');
+    }
+
+    grid.textContent = '';
+    if (templates.length === 0) {
+      grid.textContent = 'No templates in this category yet.';
+      return;
+    }
+
+    templates.forEach(template => {
+      grid.appendChild(buildTemplateCard(template));
+    });
+  } catch (error) {
+    console.error(error);
+    grid.textContent = "Couldn't load templates right now. Please try again later.";
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadTemplates);
