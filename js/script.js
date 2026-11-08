@@ -11,6 +11,7 @@ const ctx = canvas.getContext('2d');
 let width, height;
 let particles = [];
 let mouse = { x: null, y: null };
+let animationFrameId = null;
 
 // Respect users who've asked for reduced motion
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -77,7 +78,20 @@ function animate() {
     p.update();
     p.draw();
   });
-  requestAnimationFrame(animate);
+  animationFrameId = requestAnimationFrame(animate);
+}
+
+function pauseParticleAnimation() {
+  if (animationFrameId !== null) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+  }
+}
+
+function resumeParticleAnimation() {
+  if (!prefersReducedMotion && animationFrameId === null) {
+    animate();
+  }
 }
 
 window.addEventListener('resize', () => {
@@ -100,11 +114,22 @@ resizeCanvas();
 initParticles();
 
 if (!prefersReducedMotion) {
-  animate();
+  resumeParticleAnimation();
 } else {
   // still draw a static frame so the background isn't empty
   particles.forEach(p => p.draw());
 }
+
+const particleHero = canvas.closest('.hero');
+const particleVisibilityObserver = new IntersectionObserver(([entry]) => {
+  if (entry.isIntersecting) {
+    resumeParticleAnimation();
+  } else {
+    pauseParticleAnimation();
+  }
+});
+
+particleVisibilityObserver.observe(particleHero);
 
 // ============================================
 // STATS COUNTER ANIMATION

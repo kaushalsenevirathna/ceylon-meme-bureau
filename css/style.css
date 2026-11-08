@@ -1591,6 +1591,7 @@ a.download-btn {
 .cf-carousel {
   position: relative;
   width: 100%;
+  min-height: 384px;
 }
 
 .cf-scroll-region {
@@ -1945,6 +1946,10 @@ a.download-btn {
     padding: 80px 0;
   }
 
+  .cf-carousel {
+    min-height: 424px;
+  }
+
   .cf-heading {
     margin-bottom: 36px;
   }
@@ -1966,12 +1971,23 @@ a.download-btn {
 
   .cf-track {
     --cf-gap: 20px;
+    animation-duration: 50.3s;
   }
 
   .cf-card {
-    flex-basis: 290px;
+    flex-basis: 280px;
     height: 400px;
     padding: 24px 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+    transition: none;
+  }
+
+  .cf-card:hover {
+    transform: none;
+  }
+
+  .cf-star {
+    filter: none;
   }
 
   .cf-fade {
