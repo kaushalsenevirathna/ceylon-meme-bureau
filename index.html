@@ -23,50 +23,41 @@
   <!-- HERO SECTION -->
   <section class="hero">
 
-    <!-- Canvas where our particle animation will be drawn -->
-    <canvas id="particle-canvas"></canvas>
-
-    <!-- Dot grid background with cursor-following glow -->
-    <div class="hero-grid"></div>
-    <div class="hero-spotlight" id="hero-spotlight"></div>
-
-    <!-- Soft ambient glow layers behind the content -->
-    <div class="hero-glow hero-glow--one"></div>
-    <div class="hero-glow hero-glow--two"></div>
-
     <div id="site-nav"></div>
 
-    <!-- Main glass content panel -->
-
-<!-- Two-column hero content: big logo left, text + buttons right (glass box removed) -->
-<div class="hero-columns">
-
-      <div class="hero-icon-col">
-        <div class="hero-icon-glow"></div>
-        <img src="assets/images/hero-icon.png" alt="Ceylon Meme Bureau logo" class="hero-icon" id="hero-box-logo">
-      </div>
-
+    <div class="hero-columns">
       <div class="hero-text-col">
-        <span class="hero-badge">Sri Lanka's #1 Meme Page</span>
-        <h1 class="hero-title">CEYLON MEME<br>BUREAU</h1>
-        <p class="hero-tagline">Sri Lanka's Official Source of Fun</p>
-        <p class="hero-description">
-          Bringing Sri Lanka's internet culture together through original memes,
-          viral entertainment, and a thriving creator community. From trending
-          humor to premium meme resources, Ceylon Meme Bureau is where creativity
-          meets comedy.
-        </p>
+        <span class="hero-eyebrow">CEYLON MEME BUREAU</span>
+        <h1 class="hero-title">Sri Lanka's <span class="hero-highlight">meme culture</span>, all in one place.</h1>
+        <p class="hero-description">Fresh memes, free templates and a growing community, made in Sri Lanka.</p>
 
         <div class="hero-buttons">
-          <a href="#trending" class="btn btn--primary">Explore Memes</a>
-          <a href="#submit" class="btn btn--secondary">Submit Your Meme</a>
+          <a href="#trending" class="btn btn--primary">Explore memes</a>
+          <a href="#submit" class="hero-submit-link">Submit your meme <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="hero-proof" aria-label="Community impact">
+          <div class="hero-proof-item">
+            <strong>10K+</strong>
+            <span>community</span>
+          </div>
+          <div class="hero-proof-item">
+            <strong>1M+</strong>
+            <span>weekly reach</span>
+          </div>
+          <div class="hero-proof-item">
+            <strong>600+</strong>
+            <span>memes published</span>
+          </div>
         </div>
       </div>
 
+      <div class="hero-collage" id="hero-collage" aria-hidden="true">
+        <div class="hero-collage-fade hero-collage-fade--top"></div>
+        <div class="hero-collage-viewport"></div>
+        <div class="hero-collage-fade hero-collage-fade--bottom"></div>
+      </div>
     </div>
-
-<!-- Small scroll hint at the bottom of the hero -->
-    <div class="scroll-hint">Scroll</div>
   </section>
 
   <!-- LIVE STATISTICS SECTION -->
@@ -421,6 +412,7 @@
   <script defer src="js/navbar.js"></script>
   <script defer src="js/nav.js"></script>
   <script defer src="js/trending.js"></script>
+  <script defer src="js/hero.js"></script>
   <script defer src="js/script.js"></script>
   <script defer src="js/client-feedback.js"></script>
 </body>

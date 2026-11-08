@@ -11,7 +11,7 @@ function insertNavbar() {
         <li><a href="trending.html">Trending</a></li>
         <li><a href="templates.html?category=all">Templates</a></li>
         <li><a href="articles.html">Insights</a></li>
-        <li><a href="index.html#submit">Submit</a></li>
+        <li><a href="index.html#submit" class="nav-cta">Submit a Meme</a></li>
         <li><a href="index.html#collab">Advertise</a></li>
         <li><a href="mailto:ceylonmemebureau@gmail.com">Contact Us</a></li>
       </ul>
