@@ -1157,78 +1157,93 @@ a.download-btn {
    4e. COMMUNITY MEME SUBMISSION FORM
    ============================================ */
 .submit {
+  --submit-surface: #12392d;
+  --submit-field: #0d2f25;
   background-color: var(--color-primary-dark);
   padding: 100px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "pitch form"
+    "rules form";
+  gap: 30px 64px;
+  align-items: start;
 }
 
 .submit-intro {
-  max-width: 700px;
-  margin: 0 auto 56px;
-  text-align: center;
+  grid-area: pitch;
+  max-width: 520px;
+  margin: 0;
+  text-align: left;
 }
 
 .submit-intro .section-title {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .submit-description {
   color: var(--color-light-gray);
-  line-height: 1.75;
-  margin-bottom: 20px;
-  text-align: left;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .submit-guidelines {
+  grid-area: rules;
+  max-width: 520px;
+  margin: 0;
   text-align: left;
-  background: rgba(248, 246, 239, 0.04);
-  border: 1px solid rgba(248, 246, 239, 0.08);
-  border-left: 3px solid var(--color-accent);
-  border-radius: var(--radius-md);
-  padding: 20px 24px;
-  margin: 24px 0;
-}
-
-.submit-guidelines-title {
-  font-weight: 600;
-  color: var(--color-off-white);
-  margin-bottom: 12px;
 }
 
 .submit-guidelines ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 11px;
+  margin: 0 0 18px;
+  padding: 0;
 }
 
 .submit-guidelines li {
   position: relative;
-  padding-left: 22px;
+  padding-left: 24px;
   color: var(--color-light-gray);
   font-size: 0.9rem;
   line-height: 1.5;
 }
 
 .submit-guidelines li::before {
-  content: '✓';
+  content: '';
   position: absolute;
-  left: 0;
-  color: var(--color-accent);
-  font-weight: 700;
+  top: 0.45em;
+  left: 1px;
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  transform: rotate(-45deg);
 }
 
-.submit-cta-line {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.15rem;
-  color: var(--color-accent);
-  letter-spacing: 0.02em;
-  margin-top: 28px;
+.submit-guidelines p {
+  color: var(--color-light-gray);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .submit-form {
-  max-width: 560px;
-  margin: 0 auto;
+  grid-area: form;
+  max-width: none;
+  margin: 0;
+  padding: 32px;
+  background: var(--submit-surface);
+  border: 1px solid rgba(248, 246, 239, 0.08);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.submit-form-content {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1256,51 +1271,110 @@ a.download-btn {
 
 .form-group input[type="text"],
 .form-group input[type="email"] {
+  min-height: 46px;
   font-family: var(--font-body);
   font-size: 0.95rem;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1px solid rgba(248, 246, 239, 0.15);
-  background: rgba(248, 246, 239, 0.04);
+  border: 1px solid rgba(248, 246, 239, 0.18);
+  background: var(--submit-field);
   color: var(--color-off-white);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-group input:focus {
   outline: none;
   border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(47, 163, 107, 0.2);
 }
 
-/* Custom file drop zone, replacing the default browser file input */
 .file-drop {
+  min-height: 164px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 32px 20px;
-  border: 2px dashed rgba(248, 246, 239, 0.2);
+  justify-content: center;
+  padding: 24px 20px;
+  border: 1px dashed rgba(248, 246, 239, 0.25);
+  background: var(--submit-field);
   border-radius: var(--radius-md);
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
 .file-drop:hover,
 .file-drop.drag-over {
   border-color: var(--color-accent);
   background: rgba(47, 163, 107, 0.06);
+  transform: translateY(-2px);
 }
 
 .file-drop-icon {
-  font-size: 1.5rem;
+  width: 28px;
+  height: 28px;
+  color: var(--color-accent);
+  margin-bottom: 4px;
 }
 
 .file-drop-text {
-  color: var(--color-light-gray);
-  font-size: 0.9rem;
+  color: var(--color-off-white);
+  font-size: 0.92rem;
 }
 
-/* Custom checkbox, replacing the default browser checkbox */
+.file-drop-hint {
+  color: var(--color-light-gray);
+  font-size: 0.78rem;
+}
+
+.file-preview {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  text-align: left;
+}
+
+.submit-form-content[hidden],
+.file-preview[hidden],
+.submit-success[hidden] {
+  display: none;
+}
+
+.file-preview-image {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.file-preview-name {
+  overflow: hidden;
+  color: var(--color-light-gray);
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-preview-remove,
+.submit-reset-btn {
+  border: 0;
+  background: transparent;
+  color: var(--color-light-gray);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  text-decoration: underline;
+}
+
+.file-preview-remove:hover,
+.submit-reset-btn:hover {
+  color: var(--color-accent);
+}
+
 .custom-checkbox {
   display: flex;
   align-items: flex-start;
@@ -1311,8 +1385,8 @@ a.download-btn {
 .custom-checkbox input {
   position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
+  width: 1px;
+  height: 1px;
 }
 
 .checkbox-box {
@@ -1342,6 +1416,14 @@ a.download-btn {
   font-weight: 700;
 }
 
+.custom-checkbox input:focus-visible + .checkbox-box,
+.file-drop:focus-visible,
+.file-preview-remove:focus-visible,
+.submit-reset-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 .checkbox-label {
   font-size: 0.85rem;
   color: var(--color-light-gray);
@@ -1351,7 +1433,55 @@ a.download-btn {
   text-align: center;
   font-size: 0.9rem;
   color: var(--color-accent);
-  min-height: 20px;
+  min-height: 0;
+  margin: 0;
+}
+
+.form-message--error {
+  padding: 10px 12px;
+  border: 1px solid rgba(220, 100, 91, 0.5);
+  border-radius: 8px;
+  background: rgba(220, 100, 91, 0.08);
+  color: #f0aaa3;
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.submit-success {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.submit-success-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: 700;
+}
+
+.submit-success h3 {
+  margin: 0;
+  color: var(--color-off-white);
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+}
+
+.submit-success p {
+  margin: 0;
+  color: var(--color-light-gray);
+  font-size: 0.9rem;
 }
 /* ============================================
    4f. AI MEME UPSCALER
@@ -2067,6 +2197,28 @@ a.download-btn {
    RESPONSIVE
    ============================================ */
 @media (max-width: 900px) {
+  .submit {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "pitch"
+      "form"
+      "rules";
+    gap: 32px;
+  }
+
+  .submit-intro,
+  .submit-guidelines {
+    max-width: 680px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .submit-form {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
   .about-content {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -2098,6 +2250,23 @@ a.download-btn {
 }
 
 @media (max-width: 600px) {
+  .submit {
+    padding: 72px 20px;
+    gap: 26px;
+  }
+
+  .submit-form {
+    padding: 22px 18px;
+  }
+
+  .submit-form-content {
+    gap: 18px;
+  }
+
+  .submit-success {
+    min-height: 330px;
+  }
+
   .hero-columns {
     padding: 0 24px;
   }

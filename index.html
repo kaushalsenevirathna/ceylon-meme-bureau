@@ -203,78 +203,72 @@
   <!-- COMMUNITY MEME SUBMISSION -->
   <section class="submit" id="submit">
     <div class="submit-intro">
-      <span class="stats-eyebrow">Join The Community</span>
-      <h2 class="section-title">Submit Your Meme</h2>
-      <p class="submit-description">
-        Have a meme that deserves the spotlight? Share your original creation
-        with Ceylon Meme Bureau for a chance to be featured across our
-        official platforms.
-      </p>
-      <p class="submit-description">
-        Our team regularly reviews community submissions and selects the most
-        creative, original, and entertaining memes to publish on our
-        Facebook, Instagram, and website. Every featured submission receives
-        full creator credit, including your name, social media profile, or
-        page (as provided).
-      </p>
-
-      <div class="submit-guidelines">
-        <p class="submit-guidelines-title">Before submitting, please ensure that:</p>
-        <ul>
-          <li>Your meme is your original work or you have the rights to share it.</li>
-          <li>The content complies with our community standards and does not contain illegal, hateful, or harmful material.</li>
-          <li>Any social media username or page you wish us to credit is included in your submission.</li>
-        </ul>
-      </div>
-
-      <p class="submit-description">
-        Not every submission will be published, but every meme is carefully
-        reviewed by our team. If your meme is selected, it will become part
-        of the growing Ceylon Meme Bureau community while ensuring you
-        receive the recognition you deserve.
-      </p>
-
-      <p class="submit-cta-line">Create, Submit, Get Featured!</p>
+      <span class="stats-eyebrow">JOIN THE COMMUNITY</span>
+      <h2 class="section-title">Got a meme? Get featured.</h2>
+      <p class="submit-description">Send us your original meme. If we publish it, you get full credit.</p>
     </div>
 
     <form class="submit-form" id="meme-submit-form">
-
-      <div class="form-row">
+      <div class="submit-form-content">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
+          <label for="meme-upload">Upload your meme</label>
+          <div class="file-drop" id="meme-file-drop" tabindex="0" role="button" aria-describedby="meme-file-hint">
+            <svg class="file-drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14.5v3A2.5 2.5 0 007.5 20h9a2.5 2.5 0 002.5-2.5v-3"/>
+            </svg>
+            <span class="file-drop-text" id="meme-file-text">Click to upload, or drag and drop</span>
+            <span class="file-drop-hint" id="meme-file-hint">PNG, JPG or GIF, up to 5 MB</span>
+            <div class="file-preview" id="file-preview" hidden>
+              <img class="file-preview-image" id="file-preview-image" alt="Selected meme preview">
+              <span class="file-preview-name" id="file-preview-name"></span>
+              <button type="button" class="file-preview-remove" id="file-preview-remove">Remove</button>
+            </div>
+            <input type="file" id="meme-upload" name="attachment" accept="image/*" required hidden>
+          </div>
         </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+
         <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required>
+          <label for="facebook">Page or profile for credit (optional)</label>
+          <input type="text" id="facebook" name="social_page" placeholder="@yourpage or a link">
         </div>
+
+        <label class="custom-checkbox">
+          <input type="checkbox" id="agreement" required>
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">I confirm this meme is my own work or I have the right to share it, and I agree to Ceylon Meme Bureau featuring it with credit.</span>
+        </label>
+
+        <button type="submit" class="btn btn--primary submit-button">Submit meme</button>
+        <p class="form-message" id="form-message" aria-live="polite"></p>
       </div>
 
-      <div class="form-group">
-        <label for="facebook">Social Media Profile / Page (for credit)</label>
-        <input type="text" id="facebook" name="social_page" placeholder="Optional">
+      <div class="submit-success" id="submit-success" hidden>
+        <span class="submit-success-icon" aria-hidden="true">✓</span>
+        <h3>Thanks! Your meme is in review</h3>
+        <p>If we publish it, you will be credited.</p>
+        <button type="button" class="submit-reset-btn" id="submit-reset">Submit another meme</button>
       </div>
-
-      <div class="form-group">
-        <label for="meme-upload">Upload Your Meme</label>
-        <div class="file-drop" id="meme-file-drop">
-          <span class="file-drop-icon">📤</span>
-          <span class="file-drop-text" id="meme-file-text">Click to upload, or drag and drop</span>
-          <input type="file" id="meme-upload" name="attachment" accept="image/*" required hidden>
-        </div>
-      </div>
-
-      <label class="custom-checkbox">
-        <input type="checkbox" id="agreement" required>
-        <span class="checkbox-box"></span>
-        <span class="checkbox-label">I agree to let Ceylon Meme Bureau feature this submission with credit</span>
-      </label>
-
-      <button type="submit" class="btn btn--primary">Submit Meme</button>
-
-      <p class="form-message" id="form-message"></p>
-
     </form>
+
+    <div class="submit-guidelines">
+      <ul>
+        <li>Your own work, or you have the rights to share it</li>
+        <li>Nothing illegal, hateful or harmful</li>
+        <li>Add your page or profile to be credited</li>
+      </ul>
+      <p>We review every submission, but not every meme is published.</p>
+    </div>
   </section>
 
 <!-- INSIGHTS & ARTICLES -->
